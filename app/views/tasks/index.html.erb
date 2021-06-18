@@ -3,38 +3,49 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <h1>Listado de tareas</h1> <%= link_to 'Nueva Tarea', new_task_path%>
+      <div class="row">
+        <div class="col-8">
+          <h1>Listado de tareas</h1>
+        </div>
+        <div class="col-4">
+          <%= link_to 'Nueva Tarea', new_task_path, class:"btn btn-primary btn-sm mt-3"%>
+        </div>
+      </div>
+      
+      
     </div>
       <ul class="list-group list-group-flush">
         <% @taskHacer.each do |task| %>
         <li class="list-group-item">
           <div class="row">
-            <div class="col">
+            <div class="col-8">
               <%= task.description %>
             </div>
-            <div class="col">
-              <%= link_to 'Edit', edit_task_path(task) %>
+            <div class="col-1">
+              <%= link_to 'Editar', edit_task_path(task), class:"btn btn-warning btn-sm"%>
             </div>
-            <div class="col">
-              <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div class="col-1">
+              <%= link_to 'Eliminar', task, method: :delete, data: { confirm: '¿Estás seguro?' }, class:"btn btn-danger btn-sm" %>
             </div>
           </div>
         </li>
         <% end %>
       </ul>
+      
       <% if @tasksFinalizadas.length !=0 %>
+      <br>
         <ul class="list-group list-group-flush">
           <% @tasksFinalizadas.each do |task| %>
           <li class="list-group-item">
             <div class="row">
-              <div class="col">
-                <%= task.description %>
+              <div class="col-8">
+                <del><%= task.description %></del>
               </div>
-              <div class="col">
-                <%= link_to 'Edit', edit_task_path(task) %>
+              <div class="col-1">
+                <%= link_to 'Editar', edit_task_path(task), class:"btn btn-warning btn-sm"%>
               </div>
-              <div class="col">
-                <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <div class="col-1">
+                <%= link_to 'Eliminar', task, method: :delete, data: { confirm: '¿Estás seguro?' }, class:"btn btn-danger btn-sm" %>
               </div>
             </div>
           </li>
