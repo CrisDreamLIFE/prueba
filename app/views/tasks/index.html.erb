@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Listado de tareas</h1> <%= link_to 'Nueva Tarea', new_task_path%>
+    </div>
+      <ul class="list-group list-group-flush">
+        <% @taskHacer.each do |task| %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col">
+              <%= task.description %>
+            </div>
+            <div class="col">
+              <%= link_to 'Edit', edit_task_path(task) %>
+            </div>
+            <div class="col">
+              <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <% if @tasksFinalizadas.length !=0 %>
+        <ul class="list-group list-group-flush">
+          <% @tasksFinalizadas.each do |task| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col">
+                <%= task.description %>
+              </div>
+              <div class="col">
+                <%= link_to 'Edit', edit_task_path(task) %>
+              </div>
+              <div class="col">
+                <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>
+
+
+
+
+
+
